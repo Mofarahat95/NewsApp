@@ -4,16 +4,23 @@ import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/utils/fonts_manager.dart';
 import 'values_manager.dart';
 
+TextStyle exo22() => GoogleFonts.exo(
+  fontSize: AppSize.s22,
+  fontWeight: FontWeightManager.normal,
+  color: AppColors.whiteColor,
+);
+
+TextStyle exo14() => GoogleFonts.exo(
+  fontSize: AppSize.s14,
+  fontWeight: FontWeightManager.normal,
+  color: AppColors.whiteColor,
+);
+
+
 TextStyle poppins() => GoogleFonts.poppins(
       fontSize: AppSize.s22,
       fontWeight: FontWeightManager.bold,
       color: AppColors.titleTextColor,
-    );
-
-TextStyle exo22() => GoogleFonts.exo(
-      fontSize: AppSize.s22,
-      fontWeight: FontWeightManager.normal,
-      color: AppColors.whiteColor,
     );
 
 TextStyle poppins13() => GoogleFonts.poppins(

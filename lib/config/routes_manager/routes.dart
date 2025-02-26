@@ -1,4 +1,4 @@
 abstract class AppRoutes {
   static const String splash = '/';
-  static const String homw = '/home';
+  static const String home = '/home';
 }
