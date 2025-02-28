@@ -17,11 +17,16 @@ TextStyle exo14() => GoogleFonts.exo(
 );
 
 
-TextStyle poppins() => GoogleFonts.poppins(
+TextStyle poppins22() => GoogleFonts.poppins(
       fontSize: AppSize.s22,
       fontWeight: FontWeightManager.bold,
       color: AppColors.titleTextColor,
     );
+TextStyle poppins24() => GoogleFonts.poppins(
+  fontSize: AppSize.s24,
+  fontWeight: FontWeightManager.bold,
+  color: AppColors.titleTextColor,
+);
 
 TextStyle poppins13() => GoogleFonts.poppins(
       fontSize: AppSize.s13,

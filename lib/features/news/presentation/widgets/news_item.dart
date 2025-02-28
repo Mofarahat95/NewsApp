@@ -24,7 +24,7 @@ class NewsItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppSize.s18),
               child: Image.network(
                 articleModel.urlToImage ?? '',
-                fit: BoxFit.cover,
+                height: 240,
               ),
             ),
             const SizedBox(
@@ -42,7 +42,7 @@ class NewsItem extends StatelessWidget {
             ),
             Text(
               textAlign: TextAlign.right,
-              articleModel.publishedAt?.substring(0,10) ?? 'publishedAt',
+              articleModel.publishedAt?.substring(0, 10) ?? 'publishedAt',
               style: poppins13(),
             ),
             const SizedBox(

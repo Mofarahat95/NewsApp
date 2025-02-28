@@ -5,12 +5,13 @@ import 'package:news/core/utils/styles_manager.dart';
 import 'package:news/features/home/presentation/screens/widgets/defulat_tab_Widget.dart';
 
 class SourcesWidget extends StatelessWidget {
-  const SourcesWidget({super.key});
+   SourcesWidget({required this.categoryId, super.key});
 
+   String categoryId;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: ApiManager.getSources(),
+      future: ApiManager.getSources(categoryId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -24,7 +25,6 @@ class SourcesWidget extends StatelessWidget {
             'Error',
             style: poppins14(),
           );
-
         } else {
           var sources = snapshot.data?.sources ?? [];
           return DefulatTabWidget(length: sources.length, sources: sources);

@@ -39,7 +39,7 @@ class Sources {
     name = json['name'];
     description = json['description'];
     url = json['url'];
-    category = json['category'];
+    category = json['categories'];
     language = json['language'];
     country = json['country'];
   }
