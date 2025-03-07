@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/core/utils/colors_manager.dart';
+import 'package:news/features/home/presentation/bloc/cubit.dart';
 import 'package:news/features/news/presentation/widgets/tab_item.dart';
 
 class DefulatTabWidget extends StatefulWidget {
@@ -17,23 +18,23 @@ class DefulatTabWidget extends StatefulWidget {
 }
 
 class _DefulatTabWidgetState extends State<DefulatTabWidget> {
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: widget.length,
       child: TabBar(
         onTap: (value) {
-          selectedIndex = value;
-          setState(() {});
+          HomeCubit.get(context).changeSource(value);
         },
         dividerColor: AppColors.transparnetColor,
         indicatorColor: AppColors.transparnetColor,
         isScrollable: true,
         tabs: widget.sources
             .map((e) => TabItem(
-                  isSelected: widget.sources[selectedIndex] == e ? true : false,
+                  isSelected:
+                      widget.sources[HomeCubit.get(context).selectedIndex] == e
+                          ? true
+                          : false,
                   source: e,
                 ))
             .toList(),

@@ -45,3 +45,8 @@ TextStyle poppins10() => GoogleFonts.poppins(
       fontWeight: FontWeightManager.normal,
       color: AppColors.bodyGrayColor,
     );
+TextStyle inter13() => GoogleFonts.exo(
+  fontSize: AppSize.s14,
+  fontWeight: FontWeightManager.normal,
+  color: AppColors.bodyGrayColor,
+);

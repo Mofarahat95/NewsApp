@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/core/api/api_manager.dart';
-import 'package:news/core/utils/colors_manager.dart';
-import 'package:news/core/utils/styles_manager.dart';
+import 'package:news/features/home/presentation/bloc/cubit.dart';
 import 'package:news/features/news/presentation/widgets/news_item.dart';
 
 class NewsWidget extends StatelessWidget {
@@ -9,32 +7,14 @@ class NewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: ApiManager.getNews('abc-news'),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.primaryColor,
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return Text(
-            'Error',
-            style: poppins14(),
-          );
-        } else {
-          var articles = snapshot.data?.articles ?? [];
-          return Expanded(
-            child: ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) => NewsItem(
-                articleModel: articles[index],
-              ),
-            ),
-          );
-        }
-      },
+    var articles = HomeCubit.get(context).news?.articles;
+    return Expanded(
+      child: ListView.builder(
+        itemCount: articles?.length ?? 0,
+        itemBuilder: (context, index) => NewsItem(
+          articleModel: articles![index],
+        ),
+      ),
     );
   }
 }
