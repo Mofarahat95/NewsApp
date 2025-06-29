@@ -1,7 +1,11 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:news/config/routes_manager/routes_manager.dart';
 
+import 'features/home/presentation/bloc/observer.dart';
+
 void main() {
+  Bloc.observer = MyBlocObserver();
   runApp(NewsApp());
 }
 

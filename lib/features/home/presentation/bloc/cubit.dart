@@ -6,12 +6,12 @@ import 'package:news/core/api/news_response.dart';
 import 'package:news/core/api/sourcesResponse.dart';
 import 'package:news/core/utils/constants.dart';
 import 'package:news/features/categories/presentation/models/category_model.dart';
-import 'package:news/features/home/presentation/bloc/home_bloc.dart';
+import 'package:news/features/home/presentation/bloc/home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super(HomeInitState());
 
-  static HomeCubit get(context) => BlocProvider.of<HomeCubit>(context);
+  static HomeCubit  get(context) => BlocProvider.of<HomeCubit>(context);
   sourcesResponse? sources;
   NewsResponse? news;
   int selectedIndex = 0;
@@ -25,7 +25,7 @@ class HomeCubit extends Cubit<HomeStates> {
         'apikey': AppConstants.apiKey,
         'category': categoryId,
       });
-      https.Response response = await https.get(url);
+      https.Response response = await https.get(url); 
       var json = jsonDecode(response.body);
       sources = sourcesResponse.fromJson(json);
       emit(GetSourcesSuccessState());

@@ -7,7 +7,7 @@ import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/utils/values_manager.dart';
 import 'package:news/features/categories/presentation/screens/category_screen.dart';
 import 'package:news/features/home/presentation/bloc/cubit.dart';
-import 'package:news/features/home/presentation/bloc/home_bloc.dart';
+import 'package:news/features/home/presentation/bloc/home_states.dart';
 import 'package:news/features/home/presentation/screens/widgets/drawer_widget.dart';
 import 'package:news/features/news/presentation/widgets/news_widget.dart';
 import 'package:news/features/news/presentation/widgets/sources_widget.dart';

@@ -6,7 +6,7 @@ import 'package:news/core/utils/values_manager.dart';
 import 'package:news/features/categories/presentation/models/category_model.dart';
 import 'package:news/features/categories/presentation/widgets/category_item.dart';
 import 'package:news/features/home/presentation/bloc/cubit.dart';
-import 'package:news/features/home/presentation/bloc/home_bloc.dart';
+import 'package:news/features/home/presentation/bloc/home_states.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
