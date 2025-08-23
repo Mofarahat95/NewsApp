@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/core/utils/colors_manager.dart';
-import 'package:news/features/home/presentation/bloc/cubit.dart';
+import 'package:news/features/home/presentation/bloc/home_cubit.dart';
 import 'package:news/features/news/presentation/widgets/tab_item.dart';
 
 class DefulatTabWidget extends StatefulWidget {

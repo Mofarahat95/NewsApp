@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news/config/routes_manager/routes.dart';
@@ -17,7 +18,7 @@ class NewsItem extends StatelessWidget {
         GoRouter.of(context).push(AppRoutes.newsDetails, extra: articleModel);
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s8),
@@ -27,8 +28,9 @@ class NewsItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(AppSize.s18),
-                child: Image.network(
-                  articleModel.urlToImage ?? '',
+                child: CachedNetworkImage(
+                  imageUrl: articleModel.urlToImage ?? '',
+                  fit: BoxFit.cover,
                   height: 240,
                 ),
               ),

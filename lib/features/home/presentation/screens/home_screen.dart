@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news/core/components/custom_app_bar.dart';
+import 'package:news/core/services/services_locator.dart';
 import 'package:news/core/utils/assets_manager.dart';
 import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/utils/values_manager.dart';
 import 'package:news/features/categories/presentation/screens/category_screen.dart';
-import 'package:news/features/home/presentation/bloc/cubit.dart';
+import 'package:news/features/home/data/repos/home_remote_ds_impl.dart';
+import 'package:news/features/home/presentation/bloc/home_cubit.dart';
 import 'package:news/features/home/presentation/bloc/home_states.dart';
 import 'package:news/features/home/presentation/screens/widgets/drawer_widget.dart';
 import 'package:news/features/news/presentation/widgets/news_widget.dart';
@@ -18,12 +20,25 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getSources(),
-      child: BlocConsumer<HomeCubit, HomeStates>(
-          listener: (context, state) {
+      create: (context) =>
+          HomeCubit(homeRepo: getIt.get<HomeRemoteDataImpl>())..getSources(),
+      child: BlocConsumer<HomeCubit, HomeStates>(listener: (context, state) {
         if (state is GetSourcesErrorState || state is GetNewsErrorState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Error')));
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Error'),
+              content: Text('error'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          );
         }
       }, builder: (context, state) {
         return Container(

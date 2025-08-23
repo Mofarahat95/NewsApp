@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/features/home/presentation/bloc/cubit.dart';
+import 'package:news/features/home/presentation/bloc/home_cubit.dart';
 import 'package:news/features/news/presentation/widgets/news_item.dart';
 
 class NewsWidget extends StatelessWidget {

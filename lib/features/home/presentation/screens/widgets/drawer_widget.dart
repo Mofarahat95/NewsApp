@@ -4,6 +4,7 @@ import 'package:news/config/routes_manager/routes.dart';
 import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/utils/styles_manager.dart';
 import 'package:news/core/utils/values_manager.dart';
+import 'package:news/features/home/presentation/bloc/home_cubit.dart';
 import 'package:news/features/home/presentation/screens/widgets/drawer_item.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -50,6 +51,8 @@ class DrawerWidget extends StatelessWidget {
                       title: 'Categories',
                       icon: Icons.auto_awesome_mosaic_outlined,
                       onClick: () {
+                        HomeCubit.get(context).categoryId = null;
+                        GoRouter.of(context).push(AppRoutes.home);
                       },
                     ),
                     DrawerItem(

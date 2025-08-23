@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:news/core/utils/assets_manager.dart';
 import 'package:news/features/splash/presentation/widgets/navigate_to.dart';
 
@@ -28,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Align(
             alignment: Alignment.center,
-            child: Image.asset(AppAssets.logoImage),
+            child: Lottie.asset("assets/jsons/icon.json", height: 220),
           ),
         ],
       ),

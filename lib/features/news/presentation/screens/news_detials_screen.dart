@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news/core/api/news_response.dart';
-import 'package:news/core/components/custom_app_bar.dart';
 import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/utils/styles_manager.dart';
 import 'package:news/core/utils/values_manager.dart';
@@ -30,8 +30,11 @@ class NewsDetialsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ClipRRect(
-                borderRadius: BorderRadius.circular(AppSize.s5),
-                child: Image.network(article.urlToImage ?? "")),
+              borderRadius: BorderRadius.circular(AppSize.s5),
+              child: CachedNetworkImage(
+                imageUrl: article.urlToImage ?? "",
+              ),
+            ),
             Text(
               article.source?.name ?? "",
               style: poppins10(),
