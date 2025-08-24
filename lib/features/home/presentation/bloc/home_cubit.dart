@@ -23,6 +23,7 @@ class HomeCubit extends Cubit<HomeStates> {
       emit(GetSourcesSuccessState(sources: sources));
       getNews(sources!.sources![selectedIndex].id ?? "abc-news");
     } catch (e) {
+      print(e.toString());
       emit(GetSourcesErrorState(error: e.toString()));
     }
   }
@@ -33,6 +34,7 @@ class HomeCubit extends Cubit<HomeStates> {
       news = await homeRepo.getNews(sourceId);
       emit(GetNewsSuccessState(news: news));
     } catch (e) {
+      print(e.toString());
       emit(GetNewsErrorState(error: e.toString()));
     }
   }

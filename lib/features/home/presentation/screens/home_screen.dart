@@ -8,6 +8,7 @@ import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/utils/values_manager.dart';
 import 'package:news/features/categories/presentation/screens/category_screen.dart';
 import 'package:news/features/home/data/repos/home_remote_ds_impl.dart';
+import 'package:news/features/home/data/repos/local_home_ds_impl.dart';
 import 'package:news/features/home/presentation/bloc/home_cubit.dart';
 import 'package:news/features/home/presentation/bloc/home_states.dart';
 import 'package:news/features/home/presentation/screens/widgets/drawer_widget.dart';
@@ -20,8 +21,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          HomeCubit(homeRepo: getIt.get<HomeRemoteDataImpl>())..getSources(),
+      create: (context) => HomeCubit(
+          homeRepo: false
+              ? getIt.get<HomeRemoteDataImpl>()
+              : getIt.get<HomeLocalDataImpl>())
+        ..getSources(),
       child: BlocConsumer<HomeCubit, HomeStates>(listener: (context, state) {
         if (state is GetSourcesErrorState || state is GetNewsErrorState) {
           showDialog(
